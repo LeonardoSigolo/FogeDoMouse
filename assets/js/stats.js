@@ -1,29 +1,35 @@
 const template = document.querySelector(".template");
 
+setInterval(() => {
+  const tentativas = localStorage.getItem("tentativas") || 0;
+  const tentativasTexto = document.querySelector("#tentativasDisplay");
+
+  if (tentativasTexto) {
+    tentativasTexto.innerText = `Tentativas: ${tentativas}`;
+  }
+}, 100);
+
 document.addEventListener("keydown", (e) => {
   const overlayExistente = document.querySelector(".overlay");
+
   if (overlayExistente) {
     overlayExistente.remove();
     return;
   }
-  const el = e.key;
-  const clone = document.importNode(template.content, true);
-  const tentativas = localStorage.getItem("tentativas");
+  const el = e.key.toLowerCase();
 
-  if (el === "q" || el === "Q") {
-    const overlay = clone.querySelector(".overlay");
-    const tentativasTexto = clone.querySelector("#tentativasDisplay");
-
-    tentativasTexto.innerText = `Tentativas: ${tentativas}`;
+  if (el === "q") {
+    const clone = document.importNode(template.content, true);
 
     document.body.appendChild(clone);
+  }
+});
 
-    document.addEventListener("click", (e) => {
-      const el = e.target;
+document.addEventListener("click", (e) => {
+  const overlayExistente = document.querySelector(".overlay");
+  const el = e.target;
 
-      if (el !== overlay) {
-        overlay.remove();
-      }
-    });
+  if (overlayExistente && el !== overlayExistente) {
+    overlayExistente.remove();
   }
 });

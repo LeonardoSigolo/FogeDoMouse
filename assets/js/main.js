@@ -3,13 +3,47 @@ const isca = document.querySelector(".isca");
 
 const random = (max, min) => Math.floor(Math.random() * (max - min + 1)) + min;
 
+const emojis = [
+  "💖",
+  "😍",
+  "🤡",
+  "🤢",
+  "😡",
+  "🥵",
+  "😨",
+  "🫠",
+  "🥶",
+  "🫨",
+  "🤥",
+  "😈",
+  "🤓",
+  "💩",
+  "🙈",
+  "🙉",
+  "🙊",
+  "🐵",
+  "🫦",
+  "👀",
+  "👨‍🦽‍➡️",
+  "🏃‍♂️‍➡️",
+  "💃",
+  "🖖",
+  "🤏",
+  "🖕",
+  "👉👌",
+];
+
+const trocaEmoji = (emoji) => {
+  isca.innerText = emoji;
+};
+
 const salvaTentativas = () => {
-    let tentativas = Number(localStorage.getItem('tentativas')) || 0;
+  let tentativas = Number(localStorage.getItem("tentativas")) || 0;
 
-    tentativas++
+  tentativas++;
 
-    localStorage.setItem("tentativas", tentativas);
-}
+  localStorage.setItem("tentativas", tentativas);
+};
 
 document.addEventListener("mousemove", (e) => {
   const x = e.clientX;
@@ -31,10 +65,12 @@ document.addEventListener("mousemove", (e) => {
     const yRand = random(yTelaMax, 0);
     isca.style.left = `${xRand}px`;
     isca.style.top = `${yRand}px`;
+    const randEmoji = emojis[random(emojis.length - 1, 0)];
+    trocaEmoji(randEmoji);
     salvaTentativas();
   }
 
-//   console.log(`x:${x} y:${y}`);
-//   console.log(xIscaMin, xIscaMax, yIscaMin, yIscaMax);
-//   console.log(xTelaMax, yTelaMax);
+  //   console.log(`x:${x} y:${y}`);
+  //   console.log(xIscaMin, xIscaMax, yIscaMin, yIscaMax);
+  //   console.log(xTelaMax, yTelaMax);
 });
