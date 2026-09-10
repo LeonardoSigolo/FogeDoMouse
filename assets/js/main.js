@@ -34,7 +34,7 @@ document.addEventListener("mousemove", (e) => {
     salvaTentativas();
   }
 
-  console.log(`x:${x} y:${y}`);
-  console.log(xIscaMin, xIscaMax, yIscaMin, yIscaMax);
-  console.log(xTelaMax, yTelaMax);
+//   console.log(`x:${x} y:${y}`);
+//   console.log(xIscaMin, xIscaMax, yIscaMin, yIscaMax);
+//   console.log(xTelaMax, yTelaMax);
 });
