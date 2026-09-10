@@ -3,12 +3,13 @@ const isca = document.querySelector(".isca");
 
 const random = (max, min) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-let tentativas = 0;
+const salvaTentativas = () => {
+    let tentativas = Number(localStorage.getItem('tentativas')) || 0;
 
-const contador = () => {
-  tentativas++;
-  localStorage.setItem("tentivas", tentativas);
-};
+    tentativas++
+
+    localStorage.setItem("tentativas", tentativas);
+}
 
 document.addEventListener("mousemove", (e) => {
   const x = e.clientX;
@@ -30,7 +31,7 @@ document.addEventListener("mousemove", (e) => {
     const yRand = random(yTelaMax, 0);
     isca.style.left = `${xRand}px`;
     isca.style.top = `${yRand}px`;
-    contador();
+    salvaTentativas();
   }
 
   console.log(`x:${x} y:${y}`);
