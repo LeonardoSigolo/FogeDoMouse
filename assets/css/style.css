@@ -20,6 +20,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   transition: 50ms;
+  z-index: 1;
 }
 .overlay {
   position: fixed;
@@ -36,4 +37,23 @@ body {
   border: whitesmoke;
   border-radius: 20px;
   font-weight: 700;
+}
+
+.leo, .txt{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 1vh;
+  transition: 2s;
+}
+
+.giro{
+  transform: rotate3D(1, 1, 1, 920deg);
+}
+
+.txt{
+  top: 10%;
+  color: whitesmoke;
+  font-size: 0.1rem;
 }
