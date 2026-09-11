@@ -60,7 +60,7 @@ const getPosicaoEmoji = () => {
 
   isca.style.left = `${xRand}px`;
   isca.style.top = `${yRand}px`;
-  isca.innerText = emoji;
+  isca.innerText = emoji || emojis[0];
 };
 
 getPosicaoEmoji();

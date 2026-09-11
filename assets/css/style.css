@@ -16,6 +16,9 @@ body {
   position: fixed;
   pointer-events: none;
   font-size: 1.5em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   transition: 50ms;
 }
 .overlay {
