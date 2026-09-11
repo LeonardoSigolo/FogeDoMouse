@@ -10,7 +10,7 @@ document.addEventListener("keydown", (e) => {
 
   digitos += el.toLocaleLowerCase().replace("space", " ");
 
-  if (digitos.length > 20) digitos.slice(-20);
+  if (digitos.length > 20) digitos = digitos.slice(-20);
 
   console.log(digitos);
 
@@ -26,5 +26,13 @@ document.addEventListener("keydown", (e) => {
       txt.classList.remove("giro");
     }, 10);
     digitos = "";
+  }
+
+  const existe = document.querySelector(".leo");
+  const existe2 = document.querySelector(".txt");
+
+  if (existe && el === "Enter") {
+    existe.remove();
+    existe2.remove();
   }
 });
