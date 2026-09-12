@@ -1,5 +1,6 @@
 const surpresa = document.querySelector(".surpresa");
-const audio = new Audio("assets/aud/aiaiai.mp3");
+const audio = new Audio('assets/aud/aiaiai.mp3');
+audio.volume = 0.1;
 
 let digitos = "";
 
