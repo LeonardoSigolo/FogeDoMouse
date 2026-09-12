@@ -8,6 +8,15 @@ document.addEventListener("keydown", (e) => {
 
   const clone = document.importNode(surpresa.content, true);
 
+  const img = new Image();
+  const h1 = document.createElement("h1");
+  img.classList.add("leo", "giro");
+  h1.classList.add("txt", "giro");
+  img.src = "assets/img/IMG_8103.PNG";
+  h1.innerText = "Te amo princesa 💞";
+  clone.appendChild(img);
+  clone.appendChild(h1);
+
   digitos += el.toLocaleLowerCase().replace("space", " ");
 
   if (digitos.length > 20) digitos = digitos.slice(-20);
@@ -16,14 +25,14 @@ document.addEventListener("keydown", (e) => {
 
   if (digitos.includes("nhandeara")) {
     document.body.appendChild(clone);
-    const leo = document.querySelector(".leo");
-    const txt = document.querySelector(".txt");
+    // const leo = document.querySelector(".leo");
+    // const txt = document.querySelector(".txt");
     audio.play();
     setTimeout(() => {
-      leo.style.height = "100vh";
-      txt.style.fontSize = "3rem";
-      leo.classList.remove("giro");
-      txt.classList.remove("giro");
+      img.style.height = "100vh";
+      h1.style.fontSize = "3rem";
+      img.classList.remove("giro");
+      h1.classList.remove("giro");
     }, 10);
     digitos = "";
   }
