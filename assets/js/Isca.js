@@ -32,7 +32,7 @@ class Isca {
         this.trocaEmoji();
         this.mouseEmCima = true;
         this.salvaTentativas();
-        this.salvaPosicaoEmoji();
+        salvaPosicaoEmoji();
       }
 
       if (!this.emCima) this.mouseEmCima = false;
@@ -60,21 +60,6 @@ class Isca {
     localStorage.setItem("tentativas", this.tentativas);
   }
 
-  salvaPosicaoEmoji() {
-    const todasAsIscas = document.querySelectorAll(".isca");
-    const dadosIscas = [];
-
-    for (let isca of todasAsIscas) {
-      dadosIscas.push({
-        x: isca.style.left,
-        y: isca.style.top,
-        emoji: isca.innerText,
-      });
-    }
-
-    localStorage.setItem("dadosIscas", JSON.stringify(dadosIscas));
-  }
-
   getPosicaoEmoji() {
     const dadosSalvos = localStorage.getItem("dadosIscas");
     if (!dadosSalvos) return;
@@ -98,11 +83,11 @@ class Isca {
   delete() {
     const todos = document.querySelectorAll(".isca");
 
-    if(todos.length <= 0) return;
+    if (todos.length <= 0) return;
 
-    const emojisAtuais = []
+    const emojisAtuais = [];
 
-    for(const atual of todos){
+    for (const atual of todos) {
       emojisAtuais.push(atual);
     }
 
@@ -116,6 +101,21 @@ class Isca {
   }
 }
 
+const salvaPosicaoEmoji = () => {
+  const todasAsIscas = document.querySelectorAll(".isca");
+  const dadosIscas = [];
+
+  for (let isca of todasAsIscas) {
+    dadosIscas.push({
+      x: isca.style.left,
+      y: isca.style.top,
+      emoji: isca.innerText,
+    });
+  }
+
+  localStorage.setItem("dadosIscas", JSON.stringify(dadosIscas));
+};
+
 const isca = new Isca();
 
 isca.getPosicaoEmoji();
@@ -125,6 +125,7 @@ document.addEventListener("keydown", (e) => {
 
   if (el === "f") {
     new Isca();
+    salvaPosicaoEmoji();
   }
 
   if (el === "Backspace") {
