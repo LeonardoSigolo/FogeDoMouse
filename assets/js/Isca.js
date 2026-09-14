@@ -95,9 +95,13 @@ class Isca {
 
     const ultimo = emojisAtuais.pop();
 
-    ultimo.remove();
+    ultimo.style.transition = "150ms";
+    ultimo.style.top = "110%";
 
-    this.salvaPosicaoEmoji();
+    setInterval(() => {
+      ultimo.remove();
+      salvaPosicaoEmoji();
+    }, 150);
   }
 }
 
@@ -116,6 +120,17 @@ const salvaPosicaoEmoji = () => {
   localStorage.setItem("dadosIscas", JSON.stringify(dadosIscas));
 };
 
+const deleteTudo = () => {
+  const todos = document.querySelectorAll(".isca");
+
+  if (todos.length <= 0) return;
+
+  for (const atual of todos) {
+    atual.remove();
+  }
+  salvaPosicaoEmoji();
+};
+
 const isca = new Isca();
 
 isca.getPosicaoEmoji();
@@ -123,12 +138,16 @@ isca.getPosicaoEmoji();
 document.addEventListener("keydown", (e) => {
   const el = e.key;
 
-  if (el === "f") {
+  if (el.toLowerCase() === "f") {
     new Isca();
     salvaPosicaoEmoji();
   }
 
   if (el === "Backspace") {
     isca.delete();
+  }
+
+  if (el.toLowerCase() === "c") {
+    deleteTudo();
   }
 });
