@@ -32,7 +32,7 @@ class Isca {
         this.trocaEmoji();
         this.mouseEmCima = true;
         this.salvaTentativas();
-        // this.salvaPosicaoEmoji(this.xRand, this.yRand);
+        this.salvaPosicaoEmoji();
       }
 
       if (!this.emCima) this.mouseEmCima = false;
@@ -60,33 +60,74 @@ class Isca {
     localStorage.setItem("tentativas", this.tentativas);
   }
 
-  salvaPosicaoEmoji(xRand, yRand) {
-    this.emojiAtual = this.isca.innerText;
+  salvaPosicaoEmoji() {
+    const todasAsIscas = document.querySelectorAll(".isca");
+    const dadosIscas = [];
 
-    localStorage.setItem("xRand", xRand);
-    localStorage.setItem("yRand", yRand);
-    localStorage.setItem("emoji", this.emojiAtual);
+    for (let isca of todasAsIscas) {
+      dadosIscas.push({
+        x: isca.style.left,
+        y: isca.style.top,
+        emoji: isca.innerText,
+      });
+    }
+
+    localStorage.setItem("dadosIscas", JSON.stringify(dadosIscas));
   }
 
   getPosicaoEmoji() {
-    this.xRand = localStorage.getItem("xRand");
-    this.yRand = localStorage.getItem("yRand");
-    this.emoji = localStorage.getItem("emoji");
+    const dadosSalvos = localStorage.getItem("dadosIscas");
+    if (!dadosSalvos) return;
 
-    this.isca.style.left = `${this.xRand}px`;
-    this.isca.style.top = `${this.yRand}px`;
-    this.isca.innerText = this.emoji || emojis[0];
+    const listaIscas = JSON.parse(dadosSalvos);
+
+    listaIscas.forEach((dados, index) => {
+      let i;
+      if (index === 0) {
+        i = this;
+      } else {
+        i = new Isca();
+      }
+
+      i.isca.style.left = dados.x;
+      i.isca.style.top = dados.y;
+      i.isca.innerText = dados.emoji;
+    });
+  }
+
+  delete() {
+    const todos = document.querySelectorAll(".isca");
+
+    if(todos.length <= 0) return;
+
+    const emojisAtuais = []
+
+    for(const atual of todos){
+      emojisAtuais.push(atual);
+    }
+
+    console.log(emojisAtuais);
+
+    const ultimo = emojisAtuais.pop();
+
+    ultimo.remove();
+
+    this.salvaPosicaoEmoji();
   }
 }
 
 const isca = new Isca();
 
+isca.getPosicaoEmoji();
+
 document.addEventListener("keydown", (e) => {
   const el = e.key;
 
-  console.log(el)
+  if (el === "f") {
+    new Isca();
+  }
 
-  if ((el === "f")) {
-    const iscas = new Isca();
+  if (el === "Backspace") {
+    isca.delete();
   }
 });
