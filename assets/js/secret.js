@@ -22,8 +22,6 @@ document.addEventListener("keydown", (e) => {
 
   if (digitos.length > 20) digitos = digitos.slice(-20);
 
-  console.log(digitos);
-
   if (digitos.includes("nhandeara")) {
     document.body.appendChild(clone);
     // const leo = document.querySelector(".leo");
@@ -44,5 +42,6 @@ document.addEventListener("keydown", (e) => {
   if (existe && el === "Enter") {
     existe.remove();
     existe2.remove();
+    audio.pause();
   }
 });

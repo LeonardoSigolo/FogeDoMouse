@@ -83,15 +83,13 @@ class Isca {
   delete() {
     const todos = document.querySelectorAll(".isca");
 
-    if (todos.length <= 0) return;
+    if (todos.length <= 1) new Isca();
 
     const emojisAtuais = [];
 
     for (const atual of todos) {
       emojisAtuais.push(atual);
     }
-
-    console.log(emojisAtuais);
 
     const ultimo = emojisAtuais.pop();
 
@@ -123,7 +121,7 @@ const salvaPosicaoEmoji = () => {
 const deleteTudo = () => {
   const todos = document.querySelectorAll(".isca");
 
-  if (todos.length <= 0) return;
+  if (todos.length <= 0);
 
   for (const atual of todos) {
     atual.remove();
@@ -149,5 +147,6 @@ document.addEventListener("keydown", (e) => {
 
   if (el.toLowerCase() === "c") {
     deleteTudo();
+    new Isca();
   }
 });
