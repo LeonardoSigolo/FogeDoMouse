@@ -52,4 +52,4 @@ O README foi escrito com ajuda de IA. O código do projeto foi todo escrito por 
 
 ## Como executar
 
-Abre o `index.html` no navegador ou acesse `https://leonardosigolo.github.io/FogeDoMouse/`.
+Abre o `index.html` no navegador ou acesse `[FogeDoMouse]{https://leonardosigolo.github.io/FogeDoMouse/}`.
