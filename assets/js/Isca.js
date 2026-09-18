@@ -83,7 +83,7 @@ class Isca {
   delete() {
     const todos = document.querySelectorAll(".isca");
 
-    if (todos.length <= 1) new Isca();
+    if (todos.length <= 1) return;
 
     const emojisAtuais = [];
 
